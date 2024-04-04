@@ -9,6 +9,9 @@ body {
     overflow: hidden;
 }
 /* #endregion html */
+.container {
+    max-width: 1400px;
+}
 /* #region header */
 #app {
     height: 100vh;

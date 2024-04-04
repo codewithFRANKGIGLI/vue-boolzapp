@@ -111,17 +111,32 @@ createApp({
         //console.log(this.filteredContacts);
       },
       //invio messaggio
+      
       sendMessage() {
         if (this.userText.trim() === '') {
             //non invio messaggi vuoti
             return;
         }
         //recupero ore e minuti
+        const now = new Date();
+        //formatto ore e minuti con due cifre
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const formattedTime = `${hours}:${minutes}`;
 
-        
+        const userMessage = {
+            date: formattedTime,
+            message: this.userText,
+            status: 'sent'
+        };
+
+        // console.log(this.userText);
+
         this.contacts[this.activeContact].messages.push(userMessage);
+
         //svuoto input dopo invio
         this.userText = '';
+
         //messaggio di risposta
         setTimeout(() => {
             const replyMessage = {
@@ -129,14 +144,17 @@ createApp({
                 message: 'Ok!',
                 status: 'received'
             };
-            // console.log('messaggio inviato');
+
+            console.log('messaggio inviato');
+
             this.contacts[this.activeContact].messages.push(replyMessage);
+
         }, 1000);
-      },
-      formatTime() {
-        const dt = luxon.DateTime;
-        const now = dt.now().setLocale('it').toLocaleString(dt.DATATIME_SHORT_WITH_SECONDS);
-        return now;
+    },
+
+      formatTime(dateTime) {
+        const options = { hour: '2-digit', minute: '2-digit' };
+        return new Date(dateTime).toLocaleTimeString([], options);
       },
     },
     //ad applicazione creata
