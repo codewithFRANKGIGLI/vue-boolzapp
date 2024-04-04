@@ -3,9 +3,13 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+          date: '',
+          searchText: '', //testo inserito nell'input di ricerca
+          activeContact: 0, //indice del contatto attivo all'interno di filteredContacts
+          userText: '',
             contacts: [{
                 name: 'Michele',
-                avatar: '_1',
+                avatar: 'assets/img/avatar_1.jpg',
                 visible: true,
                 messages: [{
                     date: '10/01/2020 15:30:55',
@@ -26,7 +30,7 @@ createApp({
               },
               {
                 name: 'Fabio',
-                avatar: '_2',
+                avatar: 'assets/img/avatar_2.jpg',
                 visible: true,
                 messages: [{
                     date: '20/03/2020 16:30:00',
@@ -47,7 +51,7 @@ createApp({
               },
               {
                 name: 'Samuele',
-                avatar: '_3',
+                avatar: 'assets/img/avatar_3.jpg',
                 visible: true,
                 messages: [{
                     date: '28/03/2020 10:10:40',
@@ -68,7 +72,7 @@ createApp({
               },
               {
                 name: 'Luisa',
-                avatar: '_4',
+                avatar: 'assets/img/avatar_4.jpg',
                 visible: true,
                 messages: [{
                     date: '10/01/2020 15:30:55',
@@ -86,5 +90,57 @@ createApp({
         };
     },
     methods: {
+      selectContact(index) {
+        //svuoto l'input quando cambio chat
+        this.userText = '';
+        this.activeContact = index;
+        // const filteredIndex = this.contacts.indexOf(this.filteredContacts[index]);
+        // this.activeContact = filteredIndex;
+        console.log(this.activeContact);
+      },
+      //filtro i contatti
+      filterContacts() {
+        console.log(this.searchText);
+        const search = this.searchText.toLowerCase();
+        this.contacts.forEach((contact) => {
+            //controllo se il nome del contatto include il testo di ricerca
+            const name = contact.name.toLowerCase();
+            contact.visible = name.includes(search);
+        });
+        //console.log(this.filteredContacts);
+      },
+      //invio messaggio
+      sendMessage() {
+        if (this.userText.trim() === '') {
+            //non invio messaggi vuoti
+            return;
+        }
+        //recupero ore e minuti
+
+        
+        this.contacts[this.activeContact].messages.push(userMessage);
+        //svuoto input dopo invio
+        this.userText = '';
+        //messaggio di risposta
+        setTimeout(() => {
+            const replyMessage = {
+                date: formattedTime,
+                message: 'Ok!',
+                status: 'received'
+            };
+            // console.log('messaggio inviato');
+            this.contacts[this.activeContact].messages.push(replyMessage);
+        }, 1000);
+      },
+      formatTime() {
+        const dt = luxon.DateTime;
+        const now = dt.now().setLocale('it').toLocaleString(dt.DATATIME_SHORT_WITH_SECONDS);
+        return now;
+      },
+    },
+    //ad applicazione creata
+    created() {
+      this.filteredContacts = this.contacts; //ALL'INIZIO MOSTRA TUTTI I CONTATTI
+      this.activeFilteredContact = 0; //imposta l'indice del contatto attivo iniziale
     }
 }).mount('#app');

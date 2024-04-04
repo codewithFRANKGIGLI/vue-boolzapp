@@ -1,7 +1,145 @@
-body{
+
+/* #region html */
+body {
     height: 100vh;
     background: linear-gradient(to bottom,
     #1B9688 20%,
     #DBDBD2 20%,
     #DBDBD2 100%);
+    overflow: hidden;
 }
+/* #endregion html */
+/* #region header */
+#app {
+    height: 100vh;
+}
+.h_container {
+    margin: 3rem auto;
+}
+[class^="col"] {
+    padding: 0;
+}
+.user_name {
+    font-size: 18px;
+    font-weight: 400;
+}
+.user_status {
+    font-size: 12px;
+    font-weight: 300;
+    color: #b0b0b1;
+}
+#main_user {
+    border-right: 1px solid #c9c9c9;
+}
+.user_pic {
+    & img {
+        width: 3rem;
+        border-radius: 50%;
+    }
+}
+header {
+    & #main_user, #open_chat {
+        background-color: #ebebea;
+    }
+    & i {
+        color: #b0b0b1;
+    }
+}
+/* #endregion header */
+/* #region main */
+#notifications {
+    background-color: #8fdbfc;
+}
+#bell {
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: white;
+
+    & i {
+        color: #8EDAFC;
+    }
+}
+#input_search {
+
+    background-color: #fbfafb;
+
+    & button {
+        width: 5rem;
+    }
+
+    & button,
+    input {
+        border-radius: 0;
+        border: 1px solid #ebebea;
+    }
+}
+.scroll {
+    overflow-y: scroll;
+    height: 32rem;
+}
+#preview_chat {
+    border-top: 1px solid #ebebea;
+    border-bottom: 1px solid #ebebea;
+}
+.time {
+    font-size: 12px;
+    font-weight: 300;
+    color: #b0b0b1;
+}
+#bg_chat {
+    background-image: url(/assets/img/mine.jpg);
+
+    & .container {
+        overflow-y: scroll;
+        height: 40rem;
+        padding: 3.5rem 4.5rem 0rem 4.5rem;
+    }
+}
+.message {
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+
+    & .time_message {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+        font-size: 10px;
+    }
+}
+.my_message {
+    background-color: #d4f8ba;
+}
+#message_bar {
+
+    background-color: #f2efea;
+
+    & input {
+        border-radius: 10px;
+    }
+}
+/* #endregion main */
+
+/* #region COLORS */
+.open_chat_bg {
+    background-color: #ebebea;
+}
+.close_chat_bg {
+    background-color: #FFFFFF;
+}
+.active_notifications {
+    color: #65686a;
+}
+/* #endregion COLORS */
+/* #region font */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.fs_14 {
+    font-size: 14px;
+}
+.fs_16 {
+    font-size: 16px;
+}
+/* #endregion font */
