@@ -3,7 +3,6 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-          date: '',
           searchText: '', //testo inserito nell'input di ricerca
           activeContact: 0, //indice del contatto attivo all'interno di filteredContacts
           userText: '',
@@ -150,12 +149,17 @@ createApp({
             this.contacts[this.activeContact].messages.push(replyMessage);
 
         }, 1000);
-    },
+      },
 
       formatTime(dateTime) {
         const options = { hour: '2-digit', minute: '2-digit' };
         return new Date(dateTime).toLocaleTimeString([], options);
       },
+    
+      // Funzione per dropdown
+      
+      
+
     },
     //ad applicazione creata
     created() {
