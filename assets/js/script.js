@@ -89,6 +89,7 @@ createApp({
           ],
         };
     },
+        
     methods: {
       selectContact(index) {
         //svuoto l'input quando cambio chat
