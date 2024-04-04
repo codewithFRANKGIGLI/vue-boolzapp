@@ -7,7 +7,7 @@ createApp({
           searchText: '', //testo inserito nell'input di ricerca
           activeContact: 0, //indice del contatto attivo all'interno di filteredContacts
           userText: '',
-            contacts: [{
+          contacts: [{
                 name: 'Michele',
                 avatar: 'assets/img/avatar_1.jpg',
                 visible: true,
@@ -86,7 +86,7 @@ createApp({
                   }
                 ],
               },
-            ],
+          ],
         };
     },
     methods: {
