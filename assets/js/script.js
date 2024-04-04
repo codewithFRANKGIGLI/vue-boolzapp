@@ -147,7 +147,6 @@ createApp({
             console.log('messaggio inviato');
 
             this.contacts[this.activeContact].messages.push(replyMessage);
-
         }, 1000);
       },
 
