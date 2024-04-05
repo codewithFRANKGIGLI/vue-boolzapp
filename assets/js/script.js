@@ -123,7 +123,7 @@ createApp({
         //formatto ore e minuti con due cifre
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
-        const formattedTime = `${dataMsg} - ${hours}:${minutes}`;
+        const formattedTime = `${dataMsg}  ${hours}:${minutes}`;
 
         const userMessage = {
             date: formattedTime,
