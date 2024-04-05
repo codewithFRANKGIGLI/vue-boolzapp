@@ -118,10 +118,12 @@ createApp({
         }
         //recupero ore e minuti
         const now = new Date();
+        // formatto la data
+        const dataMsg = new Date().toLocaleDateString();
         //formatto ore e minuti con due cifre
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
-        const formattedTime = `${hours}:${minutes}`;
+        const formattedTime = `${dataMsg} - ${hours}:${minutes}`;
 
         const userMessage = {
             date: formattedTime,
